@@ -1,8 +1,8 @@
 //
 //  main.m
-//  Assignment2
+//  Assignment1
 //
-//  Created by Simon on 3/5/18.
+//  Created by Simon on 2/9/18.
 //  Copyright © 2018 Simon. All rights reserved.
 //
 
@@ -14,3 +14,4 @@ int main(int argc, char * argv[]) {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
+
