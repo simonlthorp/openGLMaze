@@ -39,6 +39,12 @@
     GLuint _fogModeUniform;
     GLuint _fogStartUniform;
     GLuint _fogEndUniform;
+    
+    bool isDay;
+}
+
+- (void) dayNightToggle{
+    isDay = !isDay;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -150,7 +156,15 @@
     glUniform1f(_shininessUniform, 32.0);
     
     glUniform3f(_lightColorUniform, 1, 1, 1);
-    glUniform1f(_lightAmbientInstensityUniform, 0.2);
+    
+    if(isDay){
+        glUniform1f(_lightAmbientInstensityUniform, 1.0);
+    }else{
+        glUniform1f(_lightAmbientInstensityUniform, 0.2);
+    }
+    
+    
+    
     glUniform1f(_lightDiffuseIntensityUniform, 1.0);
     glUniform3f(_lightDirectionUniform, -0.2f, -1.0f, -0.3f);//directional
     

@@ -32,6 +32,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPl-Jr-dOY">
+                                        <rect key="frame" x="244" y="145" width="80" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="G1f-a9-UXI"/>
+                                            <constraint firstAttribute="width" constant="80" id="LS2-Gp-69f"/>
+                                        </constraints>
+                                        <state key="normal" title="Day/Night">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dayNightToggleButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="o6k-AJ-dBw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.70757378472222221" alpha="0.81726241438356162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

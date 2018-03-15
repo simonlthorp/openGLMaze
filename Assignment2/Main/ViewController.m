@@ -28,6 +28,9 @@
     float translationX;
 }
 
+- (IBAction)dayNightToggleButton:(id)sender {
+}
+
 - (void)setupScene {
     
     [Director sharedInstance].view = self.view;
