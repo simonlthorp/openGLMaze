@@ -15,16 +15,30 @@
     GLuint _modelViewMatrixUniform;
     GLuint _projectionMatrixUniform;
     GLuint _texUniform;
+    
+    GLuint _matColorUniform;
+    GLuint _viewPositionUniform;
+    
+    GLuint _matSpecularIntensityUniform;
+    GLuint _shininessUniform;
+    
     GLuint _lightColorUniform;
     GLuint _lightAmbientInstensityUniform;
     GLuint _lightDiffuseIntensityUniform;
     GLuint _lightDirectionUniform;
-    GLuint _matSpecularIntensityUniform;
-    GLuint _shininessUniform;
-    GLuint _matColorUniform;
     
-    GLuint _spotlightDirectionUniform;
-    GLuint _spotlightCutoffUniform;
+    GLuint _flashlightDirectionUniform;
+    GLuint _flashlightPositionUniform;
+    GLuint _flashlightCutoffUniform;
+    GLuint _flashlightOuterCutoffUniform;
+
+    GLuint _flashlightEnabledUniform;
+    
+    GLuint _fogEnabledUniform;
+    GLuint _fogColorUniform;
+    GLuint _fogModeUniform;
+    GLuint _fogStartUniform;
+    GLuint _fogEndUniform;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -79,13 +93,34 @@
     _modelViewMatrixUniform = glGetUniformLocation(_programHandle, "u_ModelViewMatrix");
     _projectionMatrixUniform = glGetUniformLocation(_programHandle, "u_ProjectionMatrix");
     _texUniform = glGetUniformLocation(_programHandle, "u_Texture");
+    
+    _matColorUniform = glGetUniformLocation(_programHandle, "u_MatColor");
+    
+    _viewPositionUniform = glGetUniformLocation(_programHandle, "u_ViewPosition");
+    
+    _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
+    _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
+    
     _lightColorUniform = glGetUniformLocation(_programHandle, "u_Light.Color");
     _lightAmbientInstensityUniform = glGetUniformLocation(_programHandle, "u_Light.AmbientIntensity");
     _lightDiffuseIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.DiffuseIntensity");
     _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
-    _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
-    _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
-    _matColorUniform = glGetUniformLocation(_programHandle, "u_MatColor");
+
+    _flashlightDirectionUniform = glGetUniformLocation(_programHandle, "u_Spotlight.Direction");
+    _flashlightPositionUniform = glGetUniformLocation(_programHandle, "u_Spotlight.Position");
+    
+    _flashlightCutoffUniform = glGetUniformLocation(_programHandle, "u_Spotlight.Cutoff");
+    _flashlightOuterCutoffUniform = glGetUniformLocation(_programHandle, "u_Spotlight.OuterCutoff");
+    
+    _flashlightEnabledUniform = glGetUniformLocation(_programHandle, "flashlightEnabled");
+    
+    _fogEnabledUniform = glGetUniformLocation(_programHandle, "fogEnabled");
+    _fogColorUniform = glGetUniformLocation(_programHandle, "u_FogColor");
+    _fogModeUniform = glGetUniformLocation(_programHandle, "u_FogMode");
+    
+    _fogStartUniform = glGetUniformLocation(_programHandle, "u_FogStart");
+    _fogEndUniform = glGetUniformLocation(_programHandle, "u_FogEnd");
+
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -107,30 +142,53 @@
     glBindTexture(GL_TEXTURE_2D, self.texture);
     glUniform1i(_texUniform, 1);
     
-    glUniform3f(_lightColorUniform, 1, 1, 1);
-    glUniform1f(_lightAmbientInstensityUniform, 1.0);
+    glUniform4f(_matColorUniform, self.matColor.r, self.matColor.g, self.matColor.b, self.matColor.a);
     
-    GLKVector3 lightDirectionInitial = GLKVector3Normalize(GLKVector3Make(0, 0, -1));
-    GLKMatrix4 lightRotation = GLKMatrix4RotateX(GLKMatrix4Identity, GLKMathDegreesToRadians(-25));
-    GLKVector3 lightDirectionFinal = GLKMatrix4MultiplyVector3(lightRotation, lightDirectionInitial);
-    glUniform3f(_lightDirectionUniform, lightDirectionFinal.x, lightDirectionFinal.y, lightDirectionFinal.z);
-    glUniform1f(_lightDiffuseIntensityUniform, 0.0);
-    //glUniform1f(_lightDiffuseIntensityUniform, 8.0);
-    
-    //glUniform1f(_matSpecularIntensityUniform, 1.0);
-    //glUniform1f(_shininessUniform, 12.0);
-
+    glUniform3f(_viewPositionUniform, self.cameraPosition.x, self.cameraPosition.y, self.cameraPosition.z);
     
     glUniform1f(_matSpecularIntensityUniform, 0.0);
-    glUniform1f(_shininessUniform, 12.0);
+    glUniform1f(_shininessUniform, 32.0);
     
-    glUniform4f(_matColorUniform, self.matColor.r, self.matColor.g, self.matColor.b, self.matColor.a);
+    glUniform3f(_lightColorUniform, 1, 1, 1);
+    glUniform1f(_lightAmbientInstensityUniform, 0.2);
+    glUniform1f(_lightDiffuseIntensityUniform, 1.0);
+    glUniform3f(_lightDirectionUniform, -0.2f, -1.0f, -0.3f);//directional
+    
+    glUniform3f(_flashlightDirectionUniform, self.flashlightDirection.x, self.flashlightDirection.y, self.flashlightDirection.z);
+    glUniform3f(_flashlightPositionUniform, self.flashlightPosition.x, self.flashlightPosition.y, self.flashlightPosition.z);
+
+    
+    if(self.flashlightMode) {
+        glUniform1f(_flashlightCutoffUniform, cosf(GLKMathDegreesToRadians(35)));
+    } else {
+        glUniform1f(_flashlightCutoffUniform, cosf(GLKMathDegreesToRadians(25)));
+    }
+    
+    //glUniform1f(_flashlightCutoffUniform, cosf(GLKMathDegreesToRadians(12.5)));
+    //glUniform1f(_flashlightCutoffUniform, cosf(GLKMathDegreesToRadians(17.5)));
+
+    glUniform1i(_flashlightEnabledUniform, self.flashlightEnabled);
+    
+    glUniform1i(_fogEnabledUniform, self.fogEnabled);
+    glUniform3f(_fogColorUniform, 0.2, 0.2, 0.2);
+    glUniform1i(_fogModeUniform, self.fogMode);
+    
+    glUniform1f(_fogStartUniform, 0.5);
+    glUniform1f(_fogEndUniform, 3.0);
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
 (NSString *)fragmentShader {
     if ((self = [super init])) {
         [self compileVertexShader:vertexShader fragmentShader:fragmentShader];
+        self.cameraPosition = GLKVector3Make(0, 0, 0);
+        self.flashlightPosition = GLKVector3Make(0, 0, 0);
+        self.flashlightDirection = GLKVector3Make(0, 0, -1);
+        
+        self.flashlightEnabled = NO;
+        self.flashlightMode = NO;
+        self.fogEnabled = YES;
+        self.fogMode = YES;
     }
     return self;
 }

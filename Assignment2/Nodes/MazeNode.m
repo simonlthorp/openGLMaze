@@ -445,9 +445,8 @@
     
 }
 
--(void) updateWithDelta:(NSTimeInterval)dt {
-    [super updateWithDelta:dt];
-    self.rotationY += 0;
+- (Cell *) getCellX:(int)x Y:(int)y {
+    return cells[x * xSize + y];
 }
 
 @end

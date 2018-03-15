@@ -7,6 +7,7 @@
 //
 
 #import "Node.h"
+#import "Cell.h"
 
 @interface MazeNode : Node
 
@@ -20,4 +21,5 @@
 - (void)giveMeNeighbour;
 - (void)addFloorsToCellsWithShader:(Renderer *)shader;
 - (void)applyTextures;
+- (Cell *) getCellX:(int)x Y:(int)y;
 @end

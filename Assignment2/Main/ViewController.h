@@ -15,5 +15,8 @@
 
 @interface ViewController : GLKViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *MinimapLabel;
+@property (weak, nonatomic) IBOutlet UIView *consoleView;
+
 @end
 

@@ -28,6 +28,7 @@
 @property (assign) GLKVector4 matColor;
 @property (assign) float width;
 @property (assign) float height;
+@property (assign) BOOL isRotating;
     
 @property (nonatomic, strong) NSMutableArray *children;
 

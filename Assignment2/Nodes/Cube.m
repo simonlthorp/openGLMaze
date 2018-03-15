@@ -138,8 +138,10 @@
 
 
 - (void)updateWithDelta:(NSTimeInterval)dt {
-    //self.rotationZ += M_PI * dt;
-    //self.rotationY += M_PI/8 * dt;
+    if(self.isRotating) {
+        self.rotationZ += M_PI * dt;
+        self.rotationY += M_PI/8 * dt;
+    }
 }
 
 @end

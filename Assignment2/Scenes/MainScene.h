@@ -12,4 +12,10 @@
 
 - (instancetype)initWithShader:(Renderer *)shader;
 
+@property (nonatomic) float posX;
+@property (nonatomic) float posZ;
+@property (nonatomic) float rotY;
+
+- (void)setupMinimap;
+
 @end

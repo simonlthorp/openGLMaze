@@ -37,6 +37,7 @@
         self.scaleZ = 1.0;
         self.matColor = GLKVector4Make(1, 1, 1, 1);
         self.children = [NSMutableArray array];
+        self.isRotating = NO;
         
         glGenVertexArraysOES(1, &_vao);
         glBindVertexArrayOES(_vao);

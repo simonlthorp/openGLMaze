@@ -25,6 +25,7 @@
     GLKMatrix4 _viewMatrix;
     float rotationY;
     float translationZ;
+    float translationX;
 }
 
 - (void)setupScene {
@@ -37,8 +38,16 @@
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150);
     
     _viewMatrix = GLKMatrix4Identity;
-    rotationY = 0;
+    rotationY = GLKMathDegreesToRadians(180.0);
     
+    translationZ = -5.0;
+    
+    
+    
+}
+
+- (void)setupMinimap {
+
 }
 
 - (void)viewDidLoad {
@@ -53,6 +62,8 @@
     [self setupScene];
     
     //theObject = [[MixTest alloc] init];
+    _shader.flashlightEnabled = NO;
+    _shader.fogEnabled = NO;
 }
 
 
@@ -63,42 +74,65 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     glClearColor(255.0 / 255.0, 188.0 / 255.0, 103.0 / 255.0, 1.0);
+    //glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
+    glClearDepthf(1);
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    //GLKMatrix4 viewMatrix = GLKMatrix4Identity;
-    //GLKMatrix4 viewMatrix = [_scene viewMatrix];
     [_scene renderWithParentModelViewMatrix:_viewMatrix];
 }
 
 -(void) update {
-    //_viewMatrix = GLKMatrix4Translate(_viewMatrix, 0, 0, -M_PI * self.timeSinceLastUpdate);
-    //_viewMatrix = GLKMatrix4Rotate(_viewMatrix, GLKMathDegreesToRadians(90), 0, 1, 0);
 
-
-    //_viewMatrix = GLKMatrix4Translate(_viewMatrix,  0, 0, -M_PI_4 * self.timeSinceLastUpdate);
-    //_viewMatrix = GLKMatrix4Rotate(_viewMatrix, rotationY, 0, 1, 0);
+    _viewMatrix = GLKMatrix4MakeYRotation(rotationY);
+    _viewMatrix = GLKMatrix4Translate(_viewMatrix, -translationX, 0, -translationZ);
     
+    _scene.posX = translationX;
+    _scene.posZ = translationZ;
+    _scene.rotY = rotationY;
+    
+    //_shader.cameraPosition = GLKVector3Make(-translationX, 0, -translationZ);
+    //NSLog(@"%f, %f, %f", _shader.cameraPosition.x, _shader.cameraPosition.y, _shader.cameraPosition.z);
+
+    //_shader.flashlightPosition = GLKVector3Make(-translationX, 0, -translationZ);
+    //_shader.flashlightDirection = GLKVector3Make(0, rotationY, 0);
     
     [_scene updateWithDelta:self.timeSinceLastUpdate];
 }
+    
 - (IBAction)touchesPanned:(UIPanGestureRecognizer *)sender {
-    
-    const float m = GLKMathDegreesToRadians(0.05f);
     CGPoint rotation = [sender translationInView:self.view];
-
-    rotationY += rotation.x * m;
-    translationZ += rotation.y * m;
+    [sender setTranslation:CGPointZero inView:self.view];
     
+    float x = rotation.x / self.view.frame.size.width;
+    float y = rotation.y / self.view.frame.size.height;
     
-    _viewMatrix = GLKMatrix4Rotate(_viewMatrix, rotationY, 0, 1, 0);
-    _viewMatrix = GLKMatrix4Translate(_viewMatrix, 0, 0, translationZ);
-    rotationY = 0;
-    translationZ = 0;
-
+    rotationY += x * 2.0;
+    
+    if(rotationY > M_PI * 2) {
+        rotationY -= M_PI * 2;
+    } else if(rotationY < -M_PI * 2) {
+        rotationY += M_PI * 2;
+    }
+    
+    translationX -= sin(rotationY) * y * 5.0;
+    translationZ += cos(rotationY) * y * 5.0;
 }
+
+- (IBAction)twoFingersTapped:(UITapGestureRecognizer *)sender {
+    _consoleView.hidden = !_consoleView.hidden;
+    [_scene setupMinimap];
+}
+
+- (IBAction)doubleTapped:(UITapGestureRecognizer *)sender {
+    _viewMatrix = GLKMatrix4Identity;
+    translationX = 0;
+    translationZ = -5.0;
+    rotationY = GLKMathDegreesToRadians(180.0);
+}
+
 
 @end
