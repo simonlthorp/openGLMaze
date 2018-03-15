@@ -23,6 +23,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ww7-ap-EXy">
+                                <rect key="frame" x="200" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Atv-RF-9bs"/>
+                                    <constraint firstAttribute="width" constant="80" id="xtV-Cb-f1D"/>
+                                </constraints>
+                                <state key="normal" title="Fog">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fogButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="Z1L-PF-r5P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-0X-TVQ">
+                                <rect key="frame" x="100" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="0hO-Hc-nYA"/>
+                                    <constraint firstAttribute="height" constant="30" id="POI-0d-mo2"/>
+                                </constraints>
+                                <state key="normal" title="Flashlight">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="flashlightButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="JSh-5t-xfw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPl-Jr-dOY">
+                                <rect key="frame" x="8" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="G1f-a9-UXI"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="JMO-IT-M6v"/>
+                                    <constraint firstAttribute="width" constant="80" id="LS2-Gp-69f"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bVR-oN-LGo"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="eaj-2e-evY"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="oLY-Qz-bmp"/>
+                                </constraints>
+                                <state key="normal" title="Day/Night">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dayNightToggleButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="o6k-AJ-dBw"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1I-wa-f8U" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <subviews>
@@ -32,20 +78,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPl-Jr-dOY">
-                                        <rect key="frame" x="244" y="145" width="80" height="30"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="G1f-a9-UXI"/>
-                                            <constraint firstAttribute="width" constant="80" id="LS2-Gp-69f"/>
-                                        </constraints>
-                                        <state key="normal" title="Day/Night">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dayNightToggleButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="o6k-AJ-dBw"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.70757378472222221" alpha="0.81726241438356162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -57,10 +89,16 @@
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="6XH-0X-TVQ" secondAttribute="bottom" constant="8" id="04J-Gl-7lz"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="ww7-ap-EXy" secondAttribute="bottom" constant="8" id="6ze-bb-t9Q"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="trailing" secondItem="zaf-fg-QAc" secondAttribute="trailing" id="7BM-DU-lo3"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="bottom" secondItem="zaf-fg-QAc" secondAttribute="bottom" id="AWS-3L-cAV"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" id="QHG-LQ-TEB"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="HPl-Jr-dOY" secondAttribute="bottom" constant="8" id="aLD-KM-dCg"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" id="lpX-p3-lZa"/>
+                            <constraint firstItem="ww7-ap-EXy" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="200" id="q74-N4-dwG"/>
+                            <constraint firstItem="HPl-Jr-dOY" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="qDc-mn-3yh"/>
+                            <constraint firstItem="6XH-0X-TVQ" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="100" id="x3P-z8-pg0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zaf-fg-QAc"/>
                         <connections>
