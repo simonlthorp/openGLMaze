@@ -29,7 +29,7 @@
 }
 
 - (IBAction)fogButton:(id)sender {
-    
+    _shader.fogEnabled = !_shader.fogEnabled;
 }
 
 - (IBAction)flashlightButton:(id)sender {
