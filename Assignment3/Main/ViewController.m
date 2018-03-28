@@ -27,6 +27,22 @@
     float translationZ;
     float translationX;
 }
+- (IBAction)fogMode:(id)sender {
+    _shader.fogMode = !_shader.fogMode;
+}
+
+- (IBAction)fogButton:(id)sender {
+    _shader.fogEnabled = !_shader.fogEnabled;
+}
+
+- (IBAction)flashlightButton:(id)sender {
+    _shader.flashlightEnabled = !_shader.flashlightEnabled;
+}
+
+
+- (IBAction)dayNightToggleButton:(id)sender {
+    [_shader dayNightToggle];
+}
 
 - (void)setupScene {
     

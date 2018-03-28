@@ -90,15 +90,18 @@ void main(void) {
         }
     } else {
         if(fogEnabled) {
-            if(u_FogMode) {
-                lowp float d = length(u_ViewPosition - frag_Position);
-                lowp float linearFog = clamp((u_FogEnd - d) / (u_FogEnd - u_FogStart), 0.0, 1.0);
-                
-                lowp vec3 color = AmbientColor + DiffuseColor + SpecularColor;
-                lowp vec3 result = mix(color, u_FogColor, 1.0 - linearFog);
 
-                gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(result, 1.0);
-            }
+                highp float d = length(u_ViewPosition - frag_Position);
+                lowp float linearFog = (u_FogEnd - d) / (u_FogEnd - u_FogStart);
+                linearFog = clamp(linearFog, 0.0, 1.0);
+                
+                lowp vec3 tex1 = texture2D(u_Texture, frag_TexCoord).rgb;
+                lowp vec3 color = (AmbientColor + DiffuseColor + SpecularColor) + tex1;
+                
+                lowp vec3 result = mix(u_FogColor, color, linearFog);
+                
+                gl_FragColor =  vec4(result, 1.0);
+
         } else {
            gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor), 1.0);
         }

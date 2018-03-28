@@ -30,7 +30,9 @@
 @property (assign) BOOL flashlightMode;
 @property (assign) BOOL fogEnabled;
 @property (assign) BOOL fogMode;
-    
+
+- (void)dayNightToggle;
+
 - (id)initWithVertexShader:(NSString *)vertexShader
             fragmentShader:(NSString *)fragmentShader;
 - (void)prepareToDraw;

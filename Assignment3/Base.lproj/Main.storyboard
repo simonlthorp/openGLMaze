@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qMa-Sr-LUY">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--GLKit View Controller-->
+        <scene sceneID="0ES-gu-USq">
+            <objects>
+                <glkViewController preferredFramesPerSecond="30" id="qMa-Sr-LUY" customClass="ViewController" sceneMemberID="viewController">
+                    <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" id="Udo-eh-WlK">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ww7-ap-EXy">
+                                <rect key="frame" x="200" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Atv-RF-9bs"/>
+                                    <constraint firstAttribute="width" constant="80" id="xtV-Cb-f1D"/>
+                                </constraints>
+                                <state key="normal" title="Fog">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fogButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="Z1L-PF-r5P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVj-pf-LOc">
+                                <rect key="frame" x="289" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="A5m-ho-mCE"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="M63-rS-8xK"/>
+                                    <constraint firstAttribute="width" constant="80" id="eB7-7w-eeY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="uUq-ZK-Xsz"/>
+                                </constraints>
+                                <state key="normal" title="Fog Mode">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fogMode:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="aKD-nv-YOf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-0X-TVQ">
+                                <rect key="frame" x="100" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="0hO-Hc-nYA"/>
+                                    <constraint firstAttribute="height" constant="30" id="POI-0d-mo2"/>
+                                </constraints>
+                                <state key="normal" title="Flashlight">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="flashlightButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="JSh-5t-xfw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPl-Jr-dOY">
+                                <rect key="frame" x="8" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="G1f-a9-UXI"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="JMO-IT-M6v"/>
+                                    <constraint firstAttribute="width" constant="80" id="LS2-Gp-69f"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bVR-oN-LGo"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="eaj-2e-evY"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="oLY-Qz-bmp"/>
+                                </constraints>
+                                <state key="normal" title="Day/Night">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dayNightToggleButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="o6k-AJ-dBw"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1I-wa-f8U" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="█████████████████████████" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-zG-dem">
+                                        <rect key="frame" x="304" y="8" width="256" height="304"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.70757378472222221" alpha="0.81726241438356162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hJ0-zG-dem" firstAttribute="top" secondItem="z1I-wa-f8U" secondAttribute="top" constant="8" id="PcK-In-beq"/>
+                                    <constraint firstAttribute="bottom" secondItem="hJ0-zG-dem" secondAttribute="bottom" constant="8" id="rLo-hv-M61"/>
+                                    <constraint firstAttribute="trailing" secondItem="hJ0-zG-dem" secondAttribute="trailing" constant="8" id="tRc-Il-D2Z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="6XH-0X-TVQ" secondAttribute="bottom" constant="8" id="04J-Gl-7lz"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="ww7-ap-EXy" secondAttribute="bottom" constant="8" id="6ze-bb-t9Q"/>
+                            <constraint firstItem="z1I-wa-f8U" firstAttribute="trailing" secondItem="zaf-fg-QAc" secondAttribute="trailing" id="7BM-DU-lo3"/>
+                            <constraint firstItem="z1I-wa-f8U" firstAttribute="bottom" secondItem="zaf-fg-QAc" secondAttribute="bottom" id="AWS-3L-cAV"/>
+                            <constraint firstItem="z1I-wa-f8U" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" id="QHG-LQ-TEB"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="HPl-Jr-dOY" secondAttribute="bottom" constant="8" id="aLD-KM-dCg"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="hVj-pf-LOc" secondAttribute="bottom" constant="8" id="hif-bb-uIs"/>
+                            <constraint firstItem="z1I-wa-f8U" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" id="lpX-p3-lZa"/>
+                            <constraint firstItem="hVj-pf-LOc" firstAttribute="leading" secondItem="ww7-ap-EXy" secondAttribute="trailing" constant="9" id="mF6-ad-la7"/>
+                            <constraint firstItem="ww7-ap-EXy" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="200" id="q74-N4-dwG"/>
+                            <constraint firstItem="HPl-Jr-dOY" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="qDc-mn-3yh"/>
+                            <constraint firstItem="6XH-0X-TVQ" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="100" id="x3P-z8-pg0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zaf-fg-QAc"/>
+                        <connections>
+                            <outlet property="delegate" destination="qMa-Sr-LUY" id="lno-Q3-Ap6"/>
+                            <outletCollection property="gestureRecognizers" destination="vMJ-ru-KkZ" appends="YES" id="Hyt-MS-uuj"/>
+                            <outletCollection property="gestureRecognizers" destination="M89-a8-VUt" appends="YES" id="dhg-8c-Mgc"/>
+                            <outletCollection property="gestureRecognizers" destination="gy5-Da-3JR" appends="YES" id="6qx-RQ-B3Z"/>
+                        </connections>
+                    </glkView>
+                    <connections>
+                        <outlet property="MinimapLabel" destination="hJ0-zG-dem" id="yvr-Jf-g5p"/>
+                        <outlet property="consoleView" destination="z1I-wa-f8U" id="a9b-cf-nYz"/>
+                    </connections>
+                </glkViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3dQ-X6-v5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="gy5-Da-3JR">
+                    <connections>
+                        <action selector="doubleTapped:" destination="qMa-Sr-LUY" id="opJ-O6-hMt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="vMJ-ru-KkZ">
+                    <connections>
+                        <action selector="touchesPanned:" destination="qMa-Sr-LUY" id="z6y-Wv-myU"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" numberOfTouchesRequired="2" id="M89-a8-VUt">
+                    <connections>
+                        <action selector="twoFingersTapped:" destination="qMa-Sr-LUY" id="660-8I-CLz"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okv-Pl-3dY">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="0Xn-4T-XtK"/>
+                        <constraint firstAttribute="height" constant="30" id="F7R-D2-wc9"/>
+                    </constraints>
+                    <state key="normal" title="Fog">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="fogButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="gUS-cY-3wZ"/>
+                    </connections>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="82.394366197183103" y="69.375"/>
+        </scene>
+    </scenes>
+</document>

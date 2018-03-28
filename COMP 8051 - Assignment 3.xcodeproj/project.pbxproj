@@ -34,6 +34,7 @@
 		94ACC637202430E60072D6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94ACC636202430E60072D6F7 /* Assets.xcassets */; };
 		94ACC63A202430E60072D6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94ACC638202430E60072D6F7 /* LaunchScreen.storyboard */; };
 		94ACC63D202430E60072D6F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ACC63C202430E60072D6F7 /* main.m */; };
+		94EAA143206B627600F78024 /* ObjLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EAA142206B627600F78024 /* ObjLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,12 +77,14 @@
 		9498D64820579C6300C4B5B6 /* brick_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brick_3.jpg; sourceTree = "<group>"; };
 		9498D64920579C6300C4B5B6 /* brick_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brick_2.jpg; sourceTree = "<group>"; };
 		9498D64A20579C6300C4B5B6 /* brick_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brick_1.jpg; sourceTree = "<group>"; };
-		94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COMP 8051 - Assignment 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COMP 8051 - Assignment 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94ACC634202430E60072D6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94ACC636202430E60072D6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94ACC639202430E60072D6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94ACC63B202430E60072D6F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94ACC63C202430E60072D6F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94EAA141206B627600F78024 /* ObjLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjLoader.h; sourceTree = "<group>"; };
+		94EAA142206B627600F78024 /* ObjLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +196,7 @@
 		94ACC621202430E60072D6F7 = {
 			isa = PBXGroup;
 			children = (
-				94ACC62C202430E60072D6F7 /* Assignment2 */,
+				94ACC62C202430E60072D6F7 /* Assignment3 */,
 				94ACC62B202430E60072D6F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,14 +204,15 @@
 		94ACC62B202430E60072D6F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 2.app */,
+				94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94ACC62C202430E60072D6F7 /* Assignment2 */ = {
+		94ACC62C202430E60072D6F7 /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				94EAA140206B626600F78024 /* Helper */,
 				9448C5D32054EA07008ED860 /* Textures */,
 				941DCF34204D2ECD00D4BB17 /* Maze */,
 				948377A5203401EC00A1964D /* CPP */,
@@ -223,15 +227,24 @@
 				94ACC63B202430E60072D6F7 /* Info.plist */,
 				94ACC63C202430E60072D6F7 /* main.m */,
 			);
-			path = Assignment2;
+			path = Assignment3;
+			sourceTree = "<group>";
+		};
+		94EAA140206B626600F78024 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				94EAA141206B627600F78024 /* ObjLoader.h */,
+				94EAA142206B627600F78024 /* ObjLoader.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94ACC629202430E60072D6F7 /* COMP 8051 - Assignment 2 */ = {
+		94ACC629202430E60072D6F7 /* COMP 8051 - Assignment 3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94ACC640202430E60072D6F7 /* Build configuration list for PBXNativeTarget "COMP 8051 - Assignment 2" */;
+			buildConfigurationList = 94ACC640202430E60072D6F7 /* Build configuration list for PBXNativeTarget "COMP 8051 - Assignment 3" */;
 			buildPhases = (
 				94ACC626202430E60072D6F7 /* Sources */,
 				94ACC627202430E60072D6F7 /* Frameworks */,
@@ -241,9 +254,9 @@
 			);
 			dependencies = (
 			);
-			name = "COMP 8051 - Assignment 2";
+			name = "COMP 8051 - Assignment 3";
 			productName = Model;
-			productReference = 94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 2.app */;
+			productReference = 94ACC62A202430E60072D6F7 /* COMP 8051 - Assignment 3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +274,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94ACC625202430E60072D6F7 /* Build configuration list for PBXProject "COMP 8051 - Assignment 2" */;
+			buildConfigurationList = 94ACC625202430E60072D6F7 /* Build configuration list for PBXProject "COMP 8051 - Assignment 3" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -274,7 +287,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94ACC629202430E60072D6F7 /* COMP 8051 - Assignment 2 */,
+				94ACC629202430E60072D6F7 /* COMP 8051 - Assignment 3 */,
 			);
 		};
 /* End PBXProject section */
@@ -310,6 +323,7 @@
 				941FA19C202AD97600BCED7B /* ViewController.m in Sources */,
 				94ACC63D202430E60072D6F7 /* main.m in Sources */,
 				94125A722030262500CBCF09 /* Node.m in Sources */,
+				94EAA143206B627600F78024 /* ObjLoader.m in Sources */,
 				9496669020329FF5007D41E2 /* Director.m in Sources */,
 				9475692E205073AA00C90630 /* Wall.m in Sources */,
 				942081D62032A83100D5BDEE /* MainScene.m in Sources */,
@@ -456,10 +470,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBN333BZUP;
-				INFOPLIST_FILE = Assignment2/Info.plist;
+				INFOPLIST_FILE = Assignment3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-051.Asst2";
+				PRODUCT_BUNDLE_IDENTIFIER = COMP8051.Asst2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,10 +485,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBN333BZUP;
-				INFOPLIST_FILE = Assignment2/Info.plist;
+				INFOPLIST_FILE = Assignment3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-051.Asst2";
+				PRODUCT_BUNDLE_IDENTIFIER = COMP8051.Asst2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -483,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94ACC625202430E60072D6F7 /* Build configuration list for PBXProject "COMP 8051 - Assignment 2" */ = {
+		94ACC625202430E60072D6F7 /* Build configuration list for PBXProject "COMP 8051 - Assignment 3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94ACC63E202430E60072D6F7 /* Debug */,
@@ -492,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94ACC640202430E60072D6F7 /* Build configuration list for PBXNativeTarget "COMP 8051 - Assignment 2" */ = {
+		94ACC640202430E60072D6F7 /* Build configuration list for PBXNativeTarget "COMP 8051 - Assignment 3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94ACC641202430E60072D6F7 /* Debug */,

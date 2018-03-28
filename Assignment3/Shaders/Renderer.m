@@ -36,9 +36,15 @@
     
     GLuint _fogEnabledUniform;
     GLuint _fogColorUniform;
-    GLuint _fogModeUniform;
+    //GLuint _fogModeUniform;
     GLuint _fogStartUniform;
     GLuint _fogEndUniform;
+    
+    bool isDay;
+}
+
+- (void) dayNightToggle{
+    isDay = !isDay;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -116,7 +122,7 @@
     
     _fogEnabledUniform = glGetUniformLocation(_programHandle, "fogEnabled");
     _fogColorUniform = glGetUniformLocation(_programHandle, "u_FogColor");
-    _fogModeUniform = glGetUniformLocation(_programHandle, "u_FogMode");
+    //_fogModeUniform = glGetUniformLocation(_programHandle, "u_FogMode");
     
     _fogStartUniform = glGetUniformLocation(_programHandle, "u_FogStart");
     _fogEndUniform = glGetUniformLocation(_programHandle, "u_FogEnd");
@@ -150,8 +156,18 @@
     glUniform1f(_shininessUniform, 32.0);
     
     glUniform3f(_lightColorUniform, 1, 1, 1);
-    glUniform1f(_lightAmbientInstensityUniform, 0.2);
-    glUniform1f(_lightDiffuseIntensityUniform, 1.0);
+    
+    if(isDay){
+        glUniform1f(_lightAmbientInstensityUniform, 0.2);
+        glUniform1f(_lightDiffuseIntensityUniform, 1.0);
+    }else{
+        glUniform1f(_lightAmbientInstensityUniform, 0.2);
+        glUniform1f(_lightDiffuseIntensityUniform, 0.2);
+    }
+    
+    
+    
+    //glUniform1f(_lightDiffuseIntensityUniform, 1.0);
     glUniform3f(_lightDirectionUniform, -0.2f, -1.0f, -0.3f);//directional
     
     glUniform3f(_flashlightDirectionUniform, self.flashlightDirection.x, self.flashlightDirection.y, self.flashlightDirection.z);
@@ -171,10 +187,15 @@
     
     glUniform1i(_fogEnabledUniform, self.fogEnabled);
     glUniform3f(_fogColorUniform, 0.2, 0.2, 0.2);
-    glUniform1i(_fogModeUniform, self.fogMode);
+    //glUniform1i(_fogModeUniform, self.fogMode);
     
-    glUniform1f(_fogStartUniform, 0.5);
-    glUniform1f(_fogEndUniform, 3.0);
+    if(self.fogMode) {
+        glUniform1f(_fogStartUniform, 0.5);
+        glUniform1f(_fogEndUniform, 3.0);
+    } else {
+        glUniform1f(_fogStartUniform, 1.0);
+        glUniform1f(_fogEndUniform, 4.0);
+    }
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
