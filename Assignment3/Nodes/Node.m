@@ -20,7 +20,7 @@
     Renderer *_shader;
 }
 
-- (instancetype)initWithName:(char *)name shader:(Renderer *)shader vertices:(Vertex *)vertices vertexCount:(unsigned int)vertexCount inidices:(GLubyte *)indices indexCount:(unsigned int)indexCount; {
+- (instancetype)initWithName:(char *)name shader:(Renderer *)shader vertices:(Vertex *)vertices vertexCount:(unsigned int)vertexCount inidices:(GLuint *)indices indexCount:(unsigned int)indexCount; {
     if ((self = [super init])) {
         
         _name = name;
@@ -50,7 +50,7 @@
         // Generate index buffer
         glGenBuffers(1, &_indexBuffer);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLubyte), indices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLuint), indices, GL_STATIC_DRAW);
         
         // Enable vertex attributes
         glEnableVertexAttribArray(VertexAttribPosition);
@@ -92,7 +92,7 @@
     [_shader prepareToDraw];
     
     glBindVertexArrayOES(_vao);
-    glDrawElements(GL_TRIANGLES, _indexCount, GL_UNSIGNED_BYTE, 0);
+    glDrawElements(GL_TRIANGLES, _indexCount, GL_UNSIGNED_INT, 0);
     glBindVertexArrayOES(0);
     
 }

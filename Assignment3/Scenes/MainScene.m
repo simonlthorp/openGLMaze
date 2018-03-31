@@ -13,6 +13,9 @@
 #import "Wall.h"
 #import "MazeNode.h"
 #import "Director.h"
+#import "ObjLoader.h"
+#import "ObjNode.h"
+
 
 @implementation MainScene {
     CGSize _gameArea;
@@ -40,9 +43,19 @@
         
         crate = [[Cube alloc] initWithShader:shader];
         crate.scale = 0.8;
-        [self.children addObject:crate];
+        //[self.children addObject:crate];
         crate.isRotating = YES;
         
+        
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"goat.obj" andTexture:@"Goat_Brown.png"];
+        ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"fox.obj" andTexture:@"fox.png"];
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"mech.obj" andTexture:@"mech.png"];
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"chicken.obj" andTexture:@"chicken_01.png"];
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"Polywhirl.obj" andTexture:@"polywhirl.png"];
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"airplane2.obj" andTexture:@"airplane2.png"];
+        //ObjNode *on = [[ObjNode alloc] initWithShader:shader andOBJFile:@"griffin.obj" andTexture:@"griffin.png"];
+        
+        [self.children addObject:on];
         
         self.posX = 0;
         self.posZ = 0;

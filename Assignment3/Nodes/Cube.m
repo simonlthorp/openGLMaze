@@ -104,7 +104,7 @@
      {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}, {0, -1, 0}}, // 23
  };
  
- const GLubyte indices[] = {
+ const GLuint indices[] = {
      // Front
      0, 1, 2,
      2, 3, 0,
@@ -129,7 +129,7 @@
 @implementation Cube
 
 - (instancetype)initWithShader:(Renderer *)shader {
-    if ((self = [super initWithName:"cube" shader:shader vertices:(Vertex *)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) inidices:(GLubyte *)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
+    if ((self = [super initWithName:"cube" shader:shader vertices:(Vertex *)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) inidices:(GLuint *)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
         //[self loadTexture:@"dungeon_01.png"];
         [self loadTexture:@"crate.jpg"];
     }
