@@ -72,6 +72,28 @@
                                     <action selector="viewButtonTapped:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="ohP-1k-K7z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFh-XK-RT7" userLabel="Object Movement">
+                                <rect key="frame" x="421" y="8" width="139" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="23d-36-kLf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Lcp-X6-eQx"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="NwN-OU-ygn"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="VVc-x3-T0m"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="YAA-kT-i3A"/>
+                                    <constraint firstAttribute="height" constant="30" id="kQ9-IO-9ji"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="mfl-22-t0Z"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="nq0-ZH-YiK"/>
+                                    <constraint firstAttribute="width" constant="80" id="ocp-BU-3Wl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="rca-TY-rJS"/>
+                                </constraints>
+                                <state key="normal" title="Object Movement">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleObjectMovement:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="QtZ-s1-smy"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-0X-TVQ">
                                 <rect key="frame" x="100" y="282" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,12 +148,16 @@
                         <constraints>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="6XH-0X-TVQ" secondAttribute="bottom" constant="8" id="04J-Gl-7lz"/>
                             <constraint firstItem="KBp-hN-kOS" firstAttribute="leading" secondItem="hVj-pf-LOc" secondAttribute="trailing" constant="8" id="3hY-4v-mXC"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="trailing" secondItem="AFh-XK-RT7" secondAttribute="trailing" constant="8" id="6d0-0O-hus"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="ww7-ap-EXy" secondAttribute="bottom" constant="8" id="6ze-bb-t9Q"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="trailing" secondItem="zaf-fg-QAc" secondAttribute="trailing" id="7BM-DU-lo3"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="bottom" secondItem="zaf-fg-QAc" secondAttribute="bottom" id="AWS-3L-cAV"/>
+                            <constraint firstItem="AFh-XK-RT7" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="C3n-cR-eDx"/>
+                            <constraint firstItem="AFh-XK-RT7" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="Cip-f4-AlP"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" id="QHG-LQ-TEB"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="HPl-Jr-dOY" secondAttribute="bottom" constant="8" id="aLD-KM-dCg"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="hVj-pf-LOc" secondAttribute="bottom" constant="8" id="hif-bb-uIs"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="trailing" secondItem="AFh-XK-RT7" secondAttribute="trailing" constant="8" id="lho-lp-AdG"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" id="lpX-p3-lZa"/>
                             <constraint firstItem="hVj-pf-LOc" firstAttribute="leading" secondItem="ww7-ap-EXy" secondAttribute="trailing" constant="9" id="mF6-ad-la7"/>
                             <constraint firstItem="ww7-ap-EXy" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="200" id="q74-N4-dwG"/>
@@ -158,7 +184,7 @@
                         <action selector="doubleTapped:" destination="qMa-Sr-LUY" id="opJ-O6-hMt"/>
                     </connections>
                 </tapGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="vMJ-ru-KkZ">
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="vMJ-ru-KkZ">
                     <connections>
                         <action selector="touchesPanned:" destination="qMa-Sr-LUY" id="z6y-Wv-myU"/>
                     </connections>
@@ -168,6 +194,11 @@
                         <action selector="twoFingersTapped:" destination="qMa-Sr-LUY" id="660-8I-CLz"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="2" maximumNumberOfTouches="2" id="UM1-NY-Pvt">
+                    <connections>
+                        <action selector="moveObject:" destination="qMa-Sr-LUY" id="UKY-4b-2jH"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="82.394366197183103" y="69.375"/>
         </scene>

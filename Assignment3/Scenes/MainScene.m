@@ -69,6 +69,7 @@ enum MoveDirection {
         //maze.position = GLKVector3Make(4.9, 0, 6.5);
         maze.position = GLKVector3Make(4.9, 0, 5.8);
         
+        _isDoingSomething = YES;
         
         //maze.parent = self;
         
@@ -158,53 +159,207 @@ enum MoveDirection {
     return NO;
 }
 
+- (void)translateModel:(CGPoint)p{
+    NSLog(@"translateModel called");
+    if(!_isDoingSomething){
+        NSLog(@"called + isDoingSomething");
+        on.position = GLKVector3Make(p.x/100, 0, p.y/100);
+    }
+    
+}
+
 - (void)updateWithDelta:(NSTimeInterval)dt {
     [super updateWithDelta:dt];
-
-    if(isDetectingCollision) {
-        PhysicsNode* pn = [physicsWorld checkCollisionAndReturnNode];
-        
-        if(pn != nil) {
-            int tag = [pn.physicsInfo getTag];
+    if(_isDoingSomething){
+        if(isDetectingCollision) {
+            PhysicsNode* pn = [physicsWorld checkCollisionAndReturnNode];
             
-            switch(tag) {
-                case 0:
-                    //NSLog (@"zero");
-                    break;
-                case 1:
-                {
-                   //NSLog (@"one");
-                    isMoving = NO;
-                    //isRotating = YES;
-                    //targetYRotation -= 90.0;
-                    isDetectingCollision = NO;
-                    isBackingUp = YES;
+            if(pn != nil) {
+                int tag = [pn.physicsInfo getTag];
+                
+                switch(tag) {
+                    case 0:
+                        //NSLog (@"zero");
+                        break;
+                    case 1:
+                    {
+                        //NSLog (@"one");
+                        isMoving = NO;
+                        //isRotating = YES;
+                        //targetYRotation -= 90.0;
+                        isDetectingCollision = NO;
+                        isBackingUp = YES;
+                        
+                        switch(direction) {
+                            case 0:
+                                targetBackupPosition = on.position.z - on.depth / 4; //-
+                                break;
+                            case 1:
+                                targetBackupPosition = on.position.x + on.depth / 4; //+
+                                break;
+                            case 2:
+                                targetBackupPosition = on.position.z + on.depth / 4; //+
+                                break;
+                            case 3:
+                                targetBackupPosition = on.position.x - on.depth / 4; // =
+                                break;
+                            default:
+                                NSLog (@"Collision error");
+                                break;
+                        }
+                        
+                        break;
+                    }
+                    case 2:
+                        //NSLog (@"two");
+                        break;
+                    case 99:
+                        //NSLog (@"99");
+                        break;
+                    default:
+                        NSLog (@"Collision tag error");
+                        break;
+                }
+            }
+        }
+        
+        
+        
+        if(isRotating) {
+            if(isTurningLeft) {
+                
+                if(currentYRotation < targetYRotation) {
+                    currentYRotation += (moveSpeed * 20.0) * dt;
+                    on.rotationY = GLKMathDegreesToRadians(currentYRotation);
+                } else {
+                    currentYRotation = targetYRotation;
+                    on.rotationY = GLKMathDegreesToRadians(currentYRotation);
+                    isRotating = NO;
+                    isMoving = YES;
+                    isDetectingCollision = YES;
                     
-                    switch(direction) {
-                        case 0:
-                            targetBackupPosition = on.position.z - on.depth / 4; //-
-                            break;
-                        case 1:
-                            targetBackupPosition = on.position.x + on.depth / 4; //+
-                            break;
-                        case 2:
-                            targetBackupPosition = on.position.z + on.depth / 4; //+
-                            break;
-                        case 3:
-                            targetBackupPosition = on.position.x - on.depth / 4; // =
-                            break;
-                        default:
-                            NSLog (@"Collision error");
-                            break;
+                    if(direction != 0) {
+                        direction--;
+                    } else {
+                        direction = 3;
                     }
                     
+                    //[self chooseRandomDirection];
+                    
+                    //NSLog(@"changing direction: %i", direction);
+                }
+                
+                
+            } else {
+                
+                if(currentYRotation > targetYRotation) {
+                    currentYRotation -= (moveSpeed * 20.0) * dt;
+                    on.rotationY = GLKMathDegreesToRadians(currentYRotation);
+                } else {
+                    currentYRotation = targetYRotation;
+                    on.rotationY = GLKMathDegreesToRadians(currentYRotation);
+                    isRotating = NO;
+                    isMoving = YES;
+                    isDetectingCollision = YES;
+                    
+                    if(direction != 3) {
+                        direction++;
+                    } else {
+                        direction = 0;
+                    }
+                    
+                }
+                
+            }
+        }
+        
+        if(isMoving) {
+            switch(direction) {
+                case 0:
+                    //NSLog (@"north");
+                    on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
+                    break;
+                case 1:
+                    //NSLog (@"east");
+                    
+                    on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
+                    break;
+                case 2:
+                    //NSLog (@"south");
+                    on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
+                    break;
+                case 3:
+                    //NSLog (@"west");
+                    on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
+                    break;
+                default:
+                    NSLog (@"Collision tag error");
+                    break;
+            }
+        }
+        
+        if(isBackingUp) {
+            switch(direction) {
+                case 0:
+                {
+                    if(on.position.z > targetBackupPosition) {
+                        on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
+                    } else {
+                        on.position = GLKVector3Make(on.position.x, on.position.y, targetBackupPosition);
+                        isBackingUp = NO;
+                        isRotating = YES;
+                        [self chooseRandomDirection];
+                        //targetYRotation -= 90.0;
+                        //isMoving = YES;
+                        //isDetectingCollision = YES;
+                    }
+                    //on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
                     break;
                 }
-                case 2:
-                    //NSLog (@"two");
+                case 1:
+                    
+                    if(on.position.x < targetBackupPosition) {
+                        on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
+                    } else {
+                        on.position = GLKVector3Make(targetBackupPosition, on.position.y, on.position.z);
+                        isBackingUp = NO;
+                        isRotating = YES;
+                        [self chooseRandomDirection];
+                        //targetYRotation -= 90.0;
+                        //isMoving = YES;
+                        //isDetectingCollision = YES;
+                    }
+                    
+                    //on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
                     break;
-                case 99:
-                    //NSLog (@"99");
+                case 2:
+                    if(on.position.z < targetBackupPosition) {
+                        on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
+                    } else {
+                        on.position = GLKVector3Make(on.position.x, on.position.y, targetBackupPosition);
+                        isBackingUp = NO;
+                        isRotating = YES;
+                        [self chooseRandomDirection];
+                        //targetYRotation -= 90.0;
+                        //isMoving = YES;
+                        //isDetectingCollision = YES;
+                    }
+                    
+                    //on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
+                    break;
+                case 3:
+                    if(on.position.x > targetBackupPosition) {
+                        on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
+                    } else {
+                        on.position = GLKVector3Make(targetBackupPosition, on.position.y, on.position.z);
+                        isBackingUp = NO;
+                        isRotating = YES;
+                        [self chooseRandomDirection];
+                        //targetYRotation -= 90.0;
+                        //isMoving = YES;
+                        //isDetectingCollision = YES;
+                    }
+                    //on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
                     break;
                 default:
                     NSLog (@"Collision tag error");
@@ -212,151 +367,6 @@ enum MoveDirection {
             }
         }
     }
-    
-   
-    
-    if(isRotating) {
-        if(isTurningLeft) {
-            
-            if(currentYRotation < targetYRotation) {
-                currentYRotation += (moveSpeed * 20.0) * dt;
-                on.rotationY = GLKMathDegreesToRadians(currentYRotation);
-            } else {
-                currentYRotation = targetYRotation;
-                on.rotationY = GLKMathDegreesToRadians(currentYRotation);
-                isRotating = NO;
-                isMoving = YES;
-                isDetectingCollision = YES;
-                
-                if(direction != 0) {
-                    direction--;
-                } else {
-                    direction = 3;
-                }
-                
-                //[self chooseRandomDirection];
-                
-                //NSLog(@"changing direction: %i", direction);
-            }
-
-            
-        } else {
-            
-            if(currentYRotation > targetYRotation) {
-                currentYRotation -= (moveSpeed * 20.0) * dt;
-                on.rotationY = GLKMathDegreesToRadians(currentYRotation);
-            } else {
-                currentYRotation = targetYRotation;
-                on.rotationY = GLKMathDegreesToRadians(currentYRotation);
-                isRotating = NO;
-                isMoving = YES;
-                isDetectingCollision = YES;
-                
-                if(direction != 3) {
-                    direction++;
-                } else {
-                    direction = 0;
-                }
-
-            }
-
-        }
-    }
-    
-    if(isMoving) {
-        switch(direction) {
-            case 0:
-                //NSLog (@"north");
-                on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
-                break;
-            case 1:
-                //NSLog (@"east");
-                
-                on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
-                break;
-            case 2:
-                //NSLog (@"south");
-                on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
-                break;
-            case 3:
-                //NSLog (@"west");
-                on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
-                break;
-            default:
-                NSLog (@"Collision tag error");
-                break;
-        }
-    }
-    
-    if(isBackingUp) {
-        switch(direction) {
-            case 0:
-            {
-                if(on.position.z > targetBackupPosition) {
-                    on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
-                } else {
-                    on.position = GLKVector3Make(on.position.x, on.position.y, targetBackupPosition);
-                    isBackingUp = NO;
-                    isRotating = YES;
-                    [self chooseRandomDirection];
-                    //targetYRotation -= 90.0;
-                    //isMoving = YES;
-                    //isDetectingCollision = YES;
-                }
-                //on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z - moveSpeed * dt);
-                break;
-            }
-            case 1:
-                
-                if(on.position.x < targetBackupPosition) {
-                    on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
-                } else {
-                    on.position = GLKVector3Make(targetBackupPosition, on.position.y, on.position.z);
-                    isBackingUp = NO;
-                    isRotating = YES;
-                    [self chooseRandomDirection];
-                    //targetYRotation -= 90.0;
-                    //isMoving = YES;
-                    //isDetectingCollision = YES;
-                }
-                
-                //on.position = GLKVector3Make(on.position.x + moveSpeed * dt, on.position.y, on.position.z);
-                break;
-            case 2:
-                if(on.position.z < targetBackupPosition) {
-                    on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
-                } else {
-                    on.position = GLKVector3Make(on.position.x, on.position.y, targetBackupPosition);
-                    isBackingUp = NO;
-                    isRotating = YES;
-                    [self chooseRandomDirection];
-                    //targetYRotation -= 90.0;
-                    //isMoving = YES;
-                    //isDetectingCollision = YES;
-                }
-                
-                //on.position = GLKVector3Make(on.position.x, on.position.y, on.position.z + moveSpeed * dt);
-                break;
-            case 3:
-                if(on.position.x > targetBackupPosition) {
-                    on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
-                } else {
-                    on.position = GLKVector3Make(targetBackupPosition, on.position.y, on.position.z);
-                    isBackingUp = NO;
-                    isRotating = YES;
-                    [self chooseRandomDirection];
-                    //targetYRotation -= 90.0;
-                    //isMoving = YES;
-                    //isDetectingCollision = YES;
-                }
-                //on.position = GLKVector3Make(on.position.x - moveSpeed * dt, on.position.y, on.position.z);
-                break;
-            default:
-                NSLog (@"Collision tag error");
-                break;
-        }
-    }
-    
     
 }
 

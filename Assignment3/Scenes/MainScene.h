@@ -17,6 +17,7 @@
 @property (nonatomic) float posX;
 @property (nonatomic) float posZ;
 @property (nonatomic) float rotY;
+@property (nonatomic) BOOL isDoingSomething;
 
 - (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix;
 - (void)setupMinimap;
@@ -27,5 +28,7 @@
 - (void)toggleView;
 
 - (BOOL)checkIfPlayerIsInSameCellAsModel;
+
+- (void)translateModel:(CGPoint)p;
 
 @end

@@ -163,6 +163,27 @@
     [_scene setupMinimap];
 }
 
+- (IBAction)moveObject:(UIPanGestureRecognizer *)sender {
+    NSLog(@"moveObject called");
+    if([_scene checkIfPlayerIsInSameCellAsModel]){
+        NSLog(@"movebject - player/model in same cell");
+        CGPoint p = [sender translationInView:sender.view];
+        
+        [_scene translateModel:p];
+    }
+    
+}
+
+- (IBAction)toggleObjectMovement:(UIButton *)sender {
+    
+    if([_scene checkIfPlayerIsInSameCellAsModel]){
+        
+        _scene.isDoingSomething = !_scene.isDoingSomething;
+        
+    }
+    
+}
+
 - (IBAction)doubleTapped:(UITapGestureRecognizer *)sender {
     _viewMatrix = GLKMatrix4Identity;
     translationX = 0;
