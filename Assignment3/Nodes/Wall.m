@@ -10,8 +10,8 @@
 
 @implementation Wall
 
-- (instancetype)initWithShader:(Renderer *)shader {
-    if ((self = [super initWithShader:shader])) {
+- (instancetype)initWithName:(char *)name andShader:(Renderer *)shader {
+    if ((self = [super initWithName:name andShader:shader])) {
         //[self loadTexture:@"dungeon_01.png"];
         //[self loadTexture:@"brick_1.jpg"];
         //[self loadTexture:@"crate.jpg"];

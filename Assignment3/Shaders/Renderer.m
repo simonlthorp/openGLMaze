@@ -210,6 +210,7 @@
         self.flashlightMode = NO;
         self.fogEnabled = YES;
         self.fogMode = YES;
+        isDay = YES;
     }
     return self;
 }

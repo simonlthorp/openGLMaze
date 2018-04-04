@@ -11,19 +11,24 @@
 
 @implementation Node
 {
-    char *_name;
+    //char *_name;
     GLuint _vao;
     GLuint _vertexBuffer;
     GLuint _indexBuffer;
     unsigned int _vertexCount;
     unsigned int _indexCount;
     Renderer *_shader;
+    
+    Vertex *mVertices;
+    unsigned int mVertexCount;
 }
+
+static int idCounter = 0;
 
 - (instancetype)initWithName:(char *)name shader:(Renderer *)shader vertices:(Vertex *)vertices vertexCount:(unsigned int)vertexCount inidices:(GLuint *)indices indexCount:(unsigned int)indexCount; {
     if ((self = [super init])) {
         
-        _name = name;
+        self.name = name;
         _vertexCount = vertexCount;
         _indexCount = indexCount;
         _shader = shader;
@@ -38,6 +43,15 @@
         self.matColor = GLKVector4Make(1, 1, 1, 1);
         self.children = [NSMutableArray array];
         self.isRotating = NO;
+        self.identitier = [self CreateID];
+        
+        if(vertices != nil) {
+            mVertexCount = vertexCount;
+            mVertices = vertices;
+            [self computeVolume];
+        }
+        
+
         
         glGenVertexArraysOES(1, &_vao);
         glBindVertexArrayOES(_vao);
@@ -127,6 +141,82 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
+}
+
+- (int)CreateID {
+    [Node incrementIdCounter];
+    return [Node idCounter];
+}
+
+- (void)computeWidth {
+    GLfloat min = mVertices[0].Position[0];
+    GLfloat max = mVertices[0].Position[0];
+    
+    for(int i = 0; i < mVertexCount; i++) {
+        GLfloat current = mVertices[i].Position[0];
+        
+        if(current < min) {
+            min = current;
+        }
+        
+        if(current > max) {
+            max = current;
+        }
+    }
+    
+    self.width = (max - min) * self.scaleX * self.scale;
+}
+
+- (void)computeHeight {
+    GLfloat min = mVertices[0].Position[1];
+    GLfloat max = mVertices[0].Position[1];
+    
+    for(int i = 0; i < mVertexCount; i++) {
+        GLfloat current = mVertices[i].Position[1];
+        
+        if(current < min) {
+            min = current;
+        }
+        
+        if(current > max) {
+            max = current;
+        }
+    }
+    
+    self.height = (max - min) * self.scaleY * self.scale;
+}
+
+- (void)computeDepth {
+    GLfloat min = mVertices[0].Position[2];
+    GLfloat max = mVertices[0].Position[2];
+    
+    for(int i = 0; i < mVertexCount; i++) {
+        GLfloat current = mVertices[i].Position[2];
+        
+        if(current < min) {
+            min = current;
+        }
+        
+        if(current > max) {
+            max = current;
+        }
+    }
+    
+    self.depth = (max - min) * self.scaleZ * self.scale;
+}
+
+- (void)computeVolume {
+    [self computeWidth];
+    [self computeHeight];
+    [self computeDepth];
+}
+
++ (int) idCounter {
+    return idCounter;
+}
+
++ (void) incrementIdCounter {
+    idCounter++;
 }
 
 @end

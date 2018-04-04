@@ -10,6 +10,6 @@
 
 @interface Wall : Cube
 
-- (instancetype)initWithShader:(Renderer *)shader;
+- (instancetype)initWithName:(char *)name andShader:(Renderer *)shader;
 
 @end

@@ -21,7 +21,7 @@
     float x = self.north.position.x - 1.5;
     float z = self.west.position.z - 1.5;
     
-    self.floor = [[Cube alloc] initWithShader:shader];
+    self.floor = [[Cube alloc] initWithName:"floor" andShader:shader];
     [self.floor loadTexture:@"dungeon_01.png"];
     self.floor.position = GLKVector3Make(x, -1.5, z);
     self.floor.scaleX = 1.5;

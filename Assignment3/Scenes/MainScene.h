@@ -7,15 +7,25 @@
 //
 
 #import "Node.h"
+#import "LineRenderer.h"
 
 @interface MainScene : Node
 
-- (instancetype)initWithShader:(Renderer *)shader;
+//- (instancetype)initWithShader:(Renderer *)shader;
+- (instancetype)initWithShader:(Renderer *)shader andLineShader:(LineRenderer *)lineShader;
 
 @property (nonatomic) float posX;
 @property (nonatomic) float posZ;
 @property (nonatomic) float rotY;
 
+- (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix;
 - (void)setupMinimap;
+- (void)updateWithDelta:(NSTimeInterval)dt;
+
+- (void)chooseRandomDirection;
+
+- (void)toggleView;
+
+- (BOOL)checkIfPlayerIsInSameCellAsModel;
 
 @end

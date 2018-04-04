@@ -10,6 +10,8 @@
 #import "MazeHelper.h"
 #import "Wall.h"
 #import "Cell.h"
+#import "PhysicsTags.h"
+#import "PhysicsWorldWrapper.h"
 
 @implementation MazeNode {
     //MazeHelper *mazeHelper;
@@ -28,9 +30,10 @@
     int currentCell;
     int backingUp;
     int wallToBreak;
+    PhysicsWorldWrapper *mPhysicsWorld;
 }
 
-- (instancetype)initWithShader:(Renderer *)shader {
+- (instancetype)initWithShader:(Renderer *)shader andWorld:(PhysicsWorldWrapper *)physicsWorld {
     if ((self = [super initWithName:"Maze" shader:shader vertices:nil vertexCount:0 inidices:nil indexCount:0])) {
         //mazeHelper = [[MazeHelper alloc] init];
         //rows = [mazeHelper getRows];
@@ -46,6 +49,7 @@
         backingUp = 0;
         wallToBreak = 0;
         
+        mPhysicsWorld = physicsWorld;
         
         self.shader = shader;
         [self createWalls];
@@ -75,7 +79,7 @@
             
             //myPos.z *= -1.0;
             
-            Wall *tempWall = [[Wall alloc] initWithShader:self.shader];
+            Wall *tempWall = [[Wall alloc] initWithName:"wall" andShader:self.shader];
             tempWall.position = myPos;
             
             //NSLog(@"x: %f, y: %f, z: %f", myPos.x, myPos.y, myPos.z);
@@ -103,7 +107,7 @@
             
             //myPos.z *= -1.0;
             
-            Wall *tempWall = [[Wall alloc] initWithShader:self.shader];
+            Wall *tempWall = [[Wall alloc] initWithName:"wall" andShader:self.shader];
             tempWall.rotationY = GLKMathDegreesToRadians(-90.0);
             tempWall.position = myPos;
             
@@ -190,6 +194,8 @@
             startedBuilding = YES;
         }
     }
+    
+    [self addWallsToPhysicsWorld];
     //[self addWallsToNode];
 }
 
@@ -304,6 +310,28 @@
     for(int i = 0; i < [cells count]; i++) {
         Cell *myCell = cells[i];
         [myCell createFloorAndAddToParentNode:self andShader:shader];
+        
+        [myCell.floor setupPhysicsInfo:kFloorTag];
+        myCell.floor.parent = self;
+        //[mPhysicsWorld    :myCell.floor.physicsInfo];
+    }
+}
+
+- (void)addWallsToPhysicsWorld {
+    for(int i = 0; i < self.children.count; i++) {
+
+        Wall *mywall = [self.children objectAtIndex:i];
+        
+        [mywall setupPhysicsInfo:kWallTag];
+        mywall.parent = self;
+        //if(i != 198) {
+        //    [mPhysicsWorld addCollisionObject:mywall.physicsInfo];
+        //}
+        
+        NSString *string = [[NSString alloc] initWithUTF8String:mywall.name];
+        if([string isEqualToString:@"wall"]) {
+                [mPhysicsWorld addCollisionObject:mywall.physicsInfo];
+        }
     }
 }
 

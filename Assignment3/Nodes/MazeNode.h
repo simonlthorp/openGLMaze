@@ -8,12 +8,14 @@
 
 #import "Node.h"
 #import "Cell.h"
+#import "PhysicsWorldWrapper.h"
 
 @interface MazeNode : Node
 
 @property (nonatomic, strong) Renderer *shader;
 
 - (instancetype)initWithShader:(Renderer *)shader;
+- (instancetype)initWithShader:(Renderer *)shader andWorld:(PhysicsWorldWrapper *)physicsWorld;
 - (void)createWalls;
 - (void)createCells;
 - (void)createMaze;
@@ -22,4 +24,6 @@
 - (void)addFloorsToCellsWithShader:(Renderer *)shader;
 - (void)applyTextures;
 - (Cell *) getCellX:(int)x Y:(int)y;
+- (void)addWallsToPhysicsWorld;
+
 @end

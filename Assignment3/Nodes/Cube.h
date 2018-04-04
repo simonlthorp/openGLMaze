@@ -6,10 +6,11 @@
 //  Copyright © 2018 Ryan Dieno. All rights reserved.
 //
 
-#import "Node.h"
+#import "PhysicsNode.h"
 
-@interface Cube : Node
+@interface Cube : PhysicsNode
 
-- (instancetype)initWithShader:(Renderer *)shader;
+- (instancetype)initWithName:(char *)name andShader:(Renderer *)shader;
+- (void)updateWithDelta:(NSTimeInterval)dt;
 
 @end

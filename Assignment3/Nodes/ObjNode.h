@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Node.h"
+#import "PhysicsNode.h"
 
-@interface ObjNode : Node
+@interface ObjNode : PhysicsNode
 
 - (instancetype)initWithShader:(Renderer *)shader andOBJFile:(NSString *)oFilename andTexture:(NSString *)tFilename;
 
 - (Vertex *)vertexArrayFromVertexObjectArray:(NSMutableArray *)voa;
 - (GLuint *) indexArrayFromIndexObjectArray:(NSMutableArray *)ioa;
+
 @end

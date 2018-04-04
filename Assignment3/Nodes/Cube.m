@@ -128,8 +128,8 @@
 
 @implementation Cube
 
-- (instancetype)initWithShader:(Renderer *)shader {
-    if ((self = [super initWithName:"cube" shader:shader vertices:(Vertex *)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) inidices:(GLuint *)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
+- (instancetype)initWithName:(char *)name andShader:(Renderer *)shader; {
+    if ((self = [super initWithName:name shader:shader vertices:(Vertex *)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) inidices:(GLuint *)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
         //[self loadTexture:@"dungeon_01.png"];
         [self loadTexture:@"crate.jpg"];
     }
@@ -138,6 +138,8 @@
 
 
 - (void)updateWithDelta:(NSTimeInterval)dt {
+    [super updateWithDelta:dt];
+    
     if(self.isRotating) {
         self.rotationZ += M_PI * dt;
         self.rotationY += M_PI/8 * dt;

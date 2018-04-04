@@ -27,9 +27,11 @@
     
     if ((self = [super initWithName:"OBJNode" shader:shader vertices:vertices vertexCount:vertexCount inidices:indices indexCount:indexCount])) {
         [self loadTexture:tFilename];
+
     }
     return self;
 }
+
 
 - (Vertex *) vertexArrayFromVertexObjectArray:(NSMutableArray *)voa {
     vertexCount = (int) voa.count;

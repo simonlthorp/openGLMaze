@@ -12,6 +12,7 @@
 #import "MainScene.h"
 #import "Director.h"
 #import "MixTest.h"
+#import "LineRenderer.h"
 
 @interface ViewController ()
 
@@ -26,6 +27,12 @@
     float rotationY;
     float translationZ;
     float translationX;
+    
+    BOOL isBirdsEye;
+    
+    float saveRotationY;
+    float saveTranslationZ;
+    float saveTranslationX;
 }
 - (IBAction)fogMode:(id)sender {
     _shader.fogMode = !_shader.fogMode;
@@ -50,14 +57,21 @@
     [Director sharedInstance].vc = self;
     
     _shader = [[Renderer alloc] initWithVertexShader:@"Shader.vsh" fragmentShader:@"Shader.fsh"];
-    _scene = [[MainScene alloc] initWithShader:_shader];
+    LineRenderer *lineShader = [[LineRenderer alloc] initWithVertexShader:@"LineVertexShader.glsl" fragmentShader:@"LineFragmentShader.glsl"];
+    lineShader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150);
+    
+    _scene = [[MainScene alloc] initWithShader:_shader andLineShader:lineShader];
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150);
     
     _viewMatrix = GLKMatrix4Identity;
     rotationY = GLKMathDegreesToRadians(180.0);
     
-    translationZ = -5.0;
+    saveRotationY = 0;
+    saveTranslationZ = 0.0;
+    saveTranslationX = 0.0;
+    isBirdsEye = NO;
     
+    //translationZ = -5.0;
     
     
 }
@@ -102,7 +116,6 @@
 }
 
 -(void) update {
-
     _viewMatrix = GLKMatrix4MakeYRotation(rotationY);
     _viewMatrix = GLKMatrix4Translate(_viewMatrix, -translationX, 0, -translationZ);
     
@@ -117,6 +130,13 @@
     //_shader.flashlightDirection = GLKVector3Make(0, rotationY, 0);
     
     [_scene updateWithDelta:self.timeSinceLastUpdate];
+    
+    
+    if([_scene checkIfPlayerIsInSameCellAsModel]) {
+
+    } else {
+
+    }
 }
     
 - (IBAction)touchesPanned:(UIPanGestureRecognizer *)sender {
@@ -146,9 +166,31 @@
 - (IBAction)doubleTapped:(UITapGestureRecognizer *)sender {
     _viewMatrix = GLKMatrix4Identity;
     translationX = 0;
-    translationZ = -5.0;
+    translationZ = 0;
     rotationY = GLKMathDegreesToRadians(180.0);
 }
 
+- (IBAction)viewButtonTapped:(id)sender {
+    
+    if(isBirdsEye) {
+        rotationY = saveRotationY;
+        translationZ = saveTranslationZ;
+        translationZ = saveTranslationZ;
+        isBirdsEye = NO;
+    } else {
+
+        saveRotationY = rotationY;
+        saveTranslationZ = translationZ;
+        saveTranslationX = translationX;
+        
+        rotationY = GLKMathDegreesToRadians(180.0);
+        translationZ = 0.0;
+        translationX = 0.0;
+        
+        isBirdsEye = YES;
+    }
+    
+    [_scene toggleView];
+}
 
 @end

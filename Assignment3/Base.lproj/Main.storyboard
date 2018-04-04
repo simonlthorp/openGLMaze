@@ -53,6 +53,25 @@
                                     <action selector="fogMode:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="aKD-nv-YOf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBp-hN-kOS">
+                                <rect key="frame" x="377" y="282" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="0Vn-Ey-CdK"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="NpN-KM-LQs"/>
+                                    <constraint firstAttribute="width" constant="80" id="Vkh-lq-gOc"/>
+                                    <constraint firstAttribute="height" constant="30" id="W52-40-fN7"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="Y9s-Kk-UnT"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="dmM-1X-2Nu"/>
+                                </constraints>
+                                <state key="normal" title="View">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fogMode:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="LyM-Yp-amA"/>
+                                    <action selector="viewButtonTapped:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="ohP-1k-K7z"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-0X-TVQ">
                                 <rect key="frame" x="100" y="282" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,6 +125,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="6XH-0X-TVQ" secondAttribute="bottom" constant="8" id="04J-Gl-7lz"/>
+                            <constraint firstItem="KBp-hN-kOS" firstAttribute="leading" secondItem="hVj-pf-LOc" secondAttribute="trailing" constant="8" id="3hY-4v-mXC"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="ww7-ap-EXy" secondAttribute="bottom" constant="8" id="6ze-bb-t9Q"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="trailing" secondItem="zaf-fg-QAc" secondAttribute="trailing" id="7BM-DU-lo3"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="bottom" secondItem="zaf-fg-QAc" secondAttribute="bottom" id="AWS-3L-cAV"/>
@@ -116,6 +136,7 @@
                             <constraint firstItem="hVj-pf-LOc" firstAttribute="leading" secondItem="ww7-ap-EXy" secondAttribute="trailing" constant="9" id="mF6-ad-la7"/>
                             <constraint firstItem="ww7-ap-EXy" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="200" id="q74-N4-dwG"/>
                             <constraint firstItem="HPl-Jr-dOY" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="qDc-mn-3yh"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="KBp-hN-kOS" secondAttribute="bottom" constant="8" id="stU-yW-gJu"/>
                             <constraint firstItem="6XH-0X-TVQ" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="100" id="x3P-z8-pg0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zaf-fg-QAc"/>
@@ -147,20 +168,6 @@
                         <action selector="twoFingersTapped:" destination="qMa-Sr-LUY" id="660-8I-CLz"/>
                     </connections>
                 </tapGestureRecognizer>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okv-Pl-3dY">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="0Xn-4T-XtK"/>
-                        <constraint firstAttribute="height" constant="30" id="F7R-D2-wc9"/>
-                    </constraints>
-                    <state key="normal" title="Fog">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="fogButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="gUS-cY-3wZ"/>
-                    </connections>
-                </button>
             </objects>
             <point key="canvasLocation" x="82.394366197183103" y="69.375"/>
         </scene>

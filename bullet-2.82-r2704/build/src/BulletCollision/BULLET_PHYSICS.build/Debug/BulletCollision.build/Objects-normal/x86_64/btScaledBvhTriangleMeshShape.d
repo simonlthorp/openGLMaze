@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.cpp \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btConcaveShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btCollisionShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btTransform.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btMatrix3x3.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btVector3.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btScalar.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btMinMax.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btAlignedAllocator.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btQuaternion.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btQuadWord.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btTriangleCallback.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btAlignedObjectArray.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btHashMap.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btSerializer.h

@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btGImpactBvh.cpp \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btGImpactBvh.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btAlignedObjectArray.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btScalar.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btAlignedAllocator.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btBoxCollision.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btTransform.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btMatrix3x3.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btVector3.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btMinMax.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btQuaternion.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btQuadWord.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btTriangleShapeEx.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btCollisionShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btTriangleShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btConvexShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btCollisionMargin.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btBoxShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btAabbUtil2.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btClipPolygon.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btGeometryUtil.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/BulletCollision/Gimpact/btGeometryOperations.h \
+  /Users/ryan/Desktop/bullet-2.82-r2704/src/LinearMath/btQuickprof.h
