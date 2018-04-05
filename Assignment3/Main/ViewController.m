@@ -163,8 +163,14 @@
     [_scene setupMinimap];
 }
 
+- (IBAction)rotationSlider:(UISlider *)sender {
+    
+    [_scene rotateModel:sender.value];
+    
+}
+
 - (IBAction)moveObject:(UIPanGestureRecognizer *)sender {
-    NSLog(@"moveObject called");
+    //NSLog(@"moveObject called");
     if([_scene checkIfPlayerIsInSameCellAsModel]){
         NSLog(@"movebject - player/model in same cell");
         CGPoint p = [sender translationInView:sender.view];
@@ -173,11 +179,20 @@
     }
     
 }
-
-- (IBAction)toggleObjectMovement:(UIButton *)sender {
+- (IBAction)scaleObject:(UISlider *)sender {
     
     if([_scene checkIfPlayerIsInSameCellAsModel]){
         
+        [_scene scaleModel:sender.value];
+        
+    }
+    
+}
+
+- (IBAction)toggleObjectMovement:(UIButton *)sender {
+    //NSLog(@"toggle object movement");
+    if([_scene checkIfPlayerIsInSameCellAsModel]){
+        //NSLog(@"toggle object movement - in same cell");
         _scene.isDoingSomething = !_scene.isDoingSomething;
         
     }

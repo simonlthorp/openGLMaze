@@ -163,7 +163,27 @@ enum MoveDirection {
     NSLog(@"translateModel called");
     if(!_isDoingSomething){
         NSLog(@"called + isDoingSomething");
-        on.position = GLKVector3Make(p.x/100, 0, p.y/100);
+        on.position = GLKVector3Make(on.position.x + p.x/100, on.position.y, on.position.z + p.y/100);
+    }
+    
+}
+
+- (void)rotateModel:(float)degrees{
+    NSLog(@"rotate model called");
+    if(!_isDoingSomething){
+        NSLog(@"rotate model - not doingsomething");
+        on.rotationY = GLKMathDegreesToRadians(degrees);
+        
+    }
+    
+}
+
+- (void)scaleModel:(float)scaleSlider{
+    
+    if(!_isDoingSomething){
+        
+        on.scale = scaleSlider;
+        
     }
     
 }

@@ -72,20 +72,12 @@
                                     <action selector="viewButtonTapped:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="ohP-1k-K7z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFh-XK-RT7" userLabel="Object Movement">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFh-XK-RT7" userLabel="Object Movement">
                                 <rect key="frame" x="421" y="8" width="139" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.02603019736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="23d-36-kLf"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Lcp-X6-eQx"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="NwN-OU-ygn"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="VVc-x3-T0m"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="YAA-kT-i3A"/>
-                                    <constraint firstAttribute="height" constant="30" id="kQ9-IO-9ji"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="mfl-22-t0Z"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="nq0-ZH-YiK"/>
-                                    <constraint firstAttribute="width" constant="80" id="ocp-BU-3Wl"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="rca-TY-rJS"/>
+                                    <constraint firstAttribute="width" constant="139" id="DKa-wO-tRI"/>
+                                    <constraint firstAttribute="height" constant="30" id="OTA-SJ-b6N"/>
                                 </constraints>
                                 <state key="normal" title="Object Movement">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,8 +118,30 @@
                                     <action selector="dayNightToggleButton:" destination="qMa-Sr-LUY" eventType="touchUpInside" id="o6k-AJ-dBw"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1I-wa-f8U" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="180" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="2tz-N4-TrX">
+                                <rect key="frame" x="6" y="8" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="GJd-YM-tUY"/>
+                                    <constraint firstAttribute="width" constant="114" id="WBt-ZM-gUT"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="rotationSlider:" destination="qMa-Sr-LUY" eventType="valueChanged" id="uiy-rH-eXb"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tMT-Ha-Zes">
+                                <rect key="frame" x="6" y="45" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="DFX-NC-Qz8"/>
+                                    <constraint firstAttribute="width" constant="114" id="JUv-Ib-rfA"/>
+                                    <constraint firstAttribute="height" constant="29" id="xBA-wJ-XSa"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29" id="xCH-pe-jSK"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="scaleObject:" destination="qMa-Sr-LUY" eventType="valueChanged" id="Im9-FP-7L2"/>
+                                </connections>
+                            </slider>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1I-wa-f8U" userLabel="Background">
+                                <rect key="frame" x="0.0" y="-8" width="568" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="█████████████████████████" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-zG-dem">
                                         <rect key="frame" x="304" y="8" width="256" height="304"/>
@@ -154,15 +168,23 @@
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="bottom" secondItem="zaf-fg-QAc" secondAttribute="bottom" id="AWS-3L-cAV"/>
                             <constraint firstItem="AFh-XK-RT7" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="C3n-cR-eDx"/>
                             <constraint firstItem="AFh-XK-RT7" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="Cip-f4-AlP"/>
+                            <constraint firstItem="tMT-Ha-Zes" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="DBC-mQ-Ubp"/>
+                            <constraint firstItem="AFh-XK-RT7" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="NkE-0V-FU7"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" id="QHG-LQ-TEB"/>
+                            <constraint firstItem="tMT-Ha-Zes" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="Qz0-68-wTT"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="HPl-Jr-dOY" secondAttribute="bottom" constant="8" id="aLD-KM-dCg"/>
+                            <constraint firstItem="tMT-Ha-Zes" firstAttribute="top" secondItem="2tz-N4-TrX" secondAttribute="bottom" constant="50" id="fGt-bx-ITt"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="hVj-pf-LOc" secondAttribute="bottom" constant="8" id="hif-bb-uIs"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="trailing" secondItem="AFh-XK-RT7" secondAttribute="trailing" constant="8" id="lho-lp-AdG"/>
                             <constraint firstItem="z1I-wa-f8U" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" id="lpX-p3-lZa"/>
                             <constraint firstItem="hVj-pf-LOc" firstAttribute="leading" secondItem="ww7-ap-EXy" secondAttribute="trailing" constant="9" id="mF6-ad-la7"/>
+                            <constraint firstItem="zaf-fg-QAc" firstAttribute="trailing" secondItem="AFh-XK-RT7" secondAttribute="trailing" constant="8" id="mbS-eu-vc7"/>
+                            <constraint firstItem="tMT-Ha-Zes" firstAttribute="top" secondItem="2tz-N4-TrX" secondAttribute="bottom" constant="8" id="nPM-Vd-7sQ"/>
                             <constraint firstItem="ww7-ap-EXy" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="200" id="q74-N4-dwG"/>
                             <constraint firstItem="HPl-Jr-dOY" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="qDc-mn-3yh"/>
                             <constraint firstItem="zaf-fg-QAc" firstAttribute="bottom" secondItem="KBp-hN-kOS" secondAttribute="bottom" constant="8" id="stU-yW-gJu"/>
+                            <constraint firstItem="2tz-N4-TrX" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="8" id="vTY-7p-UgT"/>
+                            <constraint firstItem="2tz-N4-TrX" firstAttribute="top" secondItem="zaf-fg-QAc" secondAttribute="top" constant="8" id="vyD-AM-5xd"/>
                             <constraint firstItem="6XH-0X-TVQ" firstAttribute="leading" secondItem="zaf-fg-QAc" secondAttribute="leading" constant="100" id="x3P-z8-pg0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zaf-fg-QAc"/>
@@ -171,6 +193,7 @@
                             <outletCollection property="gestureRecognizers" destination="vMJ-ru-KkZ" appends="YES" id="Hyt-MS-uuj"/>
                             <outletCollection property="gestureRecognizers" destination="M89-a8-VUt" appends="YES" id="dhg-8c-Mgc"/>
                             <outletCollection property="gestureRecognizers" destination="gy5-Da-3JR" appends="YES" id="6qx-RQ-B3Z"/>
+                            <outletCollection property="gestureRecognizers" destination="UM1-NY-Pvt" appends="YES" id="eAz-XI-6eA"/>
                         </connections>
                     </glkView>
                     <connections>

@@ -31,4 +31,8 @@
 
 - (void)translateModel:(CGPoint)p;
 
+- (void)rotateModel:(float)degrees;
+
+- (void)scaleModel:(float)scaleSlider;
+
 @end
