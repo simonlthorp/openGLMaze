@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
+@import GLKit;
 
 @interface Director : NSObject
 
 + (instancetype)sharedInstance;
 @property (nonatomic, strong) UIView *view;
-@property (nonatomic, strong) UIViewController *vc;
+@property (nonatomic, strong) ViewController *vc;
 
 @end

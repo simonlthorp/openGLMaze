@@ -18,5 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *MinimapLabel;
 @property (weak, nonatomic) IBOutlet UIView *consoleView;
 
+
+-(float)getRotationY;
+
 @end
 

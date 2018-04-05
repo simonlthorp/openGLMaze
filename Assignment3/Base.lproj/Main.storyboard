@@ -194,6 +194,7 @@
                             <outletCollection property="gestureRecognizers" destination="M89-a8-VUt" appends="YES" id="dhg-8c-Mgc"/>
                             <outletCollection property="gestureRecognizers" destination="gy5-Da-3JR" appends="YES" id="6qx-RQ-B3Z"/>
                             <outletCollection property="gestureRecognizers" destination="UM1-NY-Pvt" appends="YES" id="eAz-XI-6eA"/>
+                            <outletCollection property="gestureRecognizers" destination="kGU-rm-MM3" appends="YES" id="7ZE-6w-auR"/>
                         </connections>
                     </glkView>
                     <connections>
@@ -222,6 +223,11 @@
                         <action selector="moveObject:" destination="qMa-Sr-LUY" id="UKY-4b-2jH"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="kGU-rm-MM3">
+                    <connections>
+                        <action selector="threeFingersDoubleTapped:" destination="qMa-Sr-LUY" id="cVb-NQ-8oI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="82.394366197183103" y="69.375"/>
         </scene>

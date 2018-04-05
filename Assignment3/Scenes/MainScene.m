@@ -160,18 +160,23 @@ enum MoveDirection {
 }
 
 - (void)translateModel:(CGPoint)p{
-    NSLog(@"translateModel called");
+    //NSLog(@"translateModel called");
     if(!_isDoingSomething){
-        NSLog(@"called + isDoingSomething");
+        //NSLog(@"called + isDoingSomething");
+
+        
         on.position = GLKVector3Make(on.position.x + p.x/100, on.position.y, on.position.z + p.y/100);
+        
+        
+        
     }
     
 }
 
 - (void)rotateModel:(float)degrees{
-    NSLog(@"rotate model called");
+    //NSLog(@"rotate model called");
     if(!_isDoingSomething){
-        NSLog(@"rotate model - not doingsomething");
+       // NSLog(@"rotate model - not doingsomething");
         on.rotationY = GLKMathDegreesToRadians(degrees);
         
     }

@@ -6,8 +6,8 @@ turn right: 1 finger drag right on screen
 turn left: 1 finger drag left on screen
 reset position: 1 finger double tap
 open/close minimap: 2 finger double tap
-toggle object movement: 3 finger double tap when on top of the model
-
+toggle object movement: 3 finger double tap when on top of the model or Object Movement button
+Translate object: 2 finger drag when on top of the model
 _____________________
 
 Buttons:

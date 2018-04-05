@@ -133,9 +133,9 @@
     
     
     if([_scene checkIfPlayerIsInSameCellAsModel]) {
-
+        //NSLog(@"yes");
     } else {
-
+        //NSLog(@"no");  
     }
 }
     
@@ -172,7 +172,7 @@
 - (IBAction)moveObject:(UIPanGestureRecognizer *)sender {
     //NSLog(@"moveObject called");
     if([_scene checkIfPlayerIsInSameCellAsModel]){
-        NSLog(@"movebject - player/model in same cell");
+       // NSLog(@"movebject - player/model in same cell");
         CGPoint p = [sender translationInView:sender.view];
         
         [_scene translateModel:p];
@@ -187,6 +187,9 @@
         
     }
     
+}
+- (IBAction)threeFingersDoubleTapped:(id)sender {
+    [self toggleObjectMovement:(UIButton *)sender];
 }
 
 - (IBAction)toggleObjectMovement:(UIButton *)sender {
@@ -227,6 +230,10 @@
     }
     
     [_scene toggleView];
+}
+
+-(float)getRotationY {
+    return rotationY;
 }
 
 @end
